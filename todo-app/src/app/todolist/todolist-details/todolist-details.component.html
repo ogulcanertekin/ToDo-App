@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 style="margin-top:30px;" class="text-danger text-center">TO-DO Tasks</h3>
+                    <p class="text-center"><button type="button" routerLink="/todolists/{{todolistId}}/createtodoitem"
+                            class="btn btn-danger mb-3"> Create New Task </button></p>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="searchTerm" (input)="Search()"
+                        placeholder="Search Tasks" />
+                </div>
+                <table class="table table-hover" id="task-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Description</th>
+                            <th>DeadLine</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let todoitem of todoitems">
+                            <td>{{todoitem.name}}</td>
+                            <td>{{todoitem.description}}</td>
+                            <td>{{todoitem.deadline}}</td>
+                            <td *ngIf="todoitem.status==='Uncompleted'">{{todoitem.status}}<button type="submit"
+                                    (click)="MarkStatusAsCompleted(todoitem.todoItemId)"
+                                    class="ml-2 btn btn-xs btn-warning"><i class="fas fa-hand-point-up mr-2"></i>Mark it
+                                    as a Completed!</button></td>
+                            <td *ngIf="todoitem.status==='Expired'">{{todoitem.status}}<button
+                                    class="ml-5 btn btn-xs btn-danger"><i class="fas fa-times mr-2"></i>Its Expired
+                                    Date!</button></td>
+                            <td *ngIf="todoitem.status==='Completed'">{{todoitem.status}}<button
+                                    class="ml-3 btn btn-xs btn-success"><i class="fas fa-check-circle mr-2"></i>Task
+                                    Succesfully Completed!</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

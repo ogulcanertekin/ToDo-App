@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let todolist of todolists" class="col-md-6">
+      <h3 class="mt-5 pt-3 text-center">{{todolist.name}}</h3>
+      <div class="card mb-4 box-shadow">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" routerLink="/mytodolists/{{todolist.todoListId}}"
+                class="btn btn-sm btn-outline-secondary">Check It</button>
+            </div>
+            <small class="text-muted">Task List</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
